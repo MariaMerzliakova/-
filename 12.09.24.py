@@ -36,23 +36,23 @@ def int_fract():
         int_part = num
         fract_part = "0"
 
-    int_part_dec = int_conv_to_decimal(int_part, input_base)
-    fract_part_dec = fract_conv_to_decimal(fract_part, input_base)
-    int_result = int_conv_from_decimal(int_part_dec, output_base, alf)
-    fract_result = fract_conv_from_decimal(fract_part_dec, output_base, alf)
+    int_part_dec = intconv_to_decimal(int_part, input_base)
+    fract_part_dec = fractconv_to_decimal(fract_part, input_base)
+    int_result = intconv_from_decimal(int_part_dec, output_base, alf)
+    fract_result = fractconv_from_decimal(fract_part_dec, output_base, alf)
 
     return str(int_result) + "," + str(fract_result)
 
-def int_conv_to_decimal(int_part, base):
+def intconv_to_decimal(int_part, base):
     return int(int_part, base)
 
-def fract_conv_to_decimal(fract_part, base):
+def fractconv_to_decimal(fract_part, base):
     fract_value = 0
     for i, digit in enumerate(fract_part, 1):
         fract_value += int(digit, base) / (base ** i)
     return fract_value
 
-def int_conv_from_decimal(int_part, base, alf):
+def intconv_from_decimal(int_part, base, alf):
     if int_part == 0:
         return "0"
     remains = ""
@@ -61,7 +61,7 @@ def int_conv_from_decimal(int_part, base, alf):
         int_part //= base
     return remains
 
-def fract_conv_from_decimal(fract_part, base, alf):
+def fractconv_from_decimal(fract_part, base, alf):
     result = ""
     while fract_part > 0:
         fract_part *= base
